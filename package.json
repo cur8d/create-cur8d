@@ -1,0 +1,40 @@
+{
+  "name": "create-cur8d",
+  "version": "0.1.0",
+  "description": "Scaffold a new project from a cur8d template",
+  "bin": {
+    "create-cur8d": "./bin/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "degit": "^2.8.4",
+    "kleur": "^4.1.5",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/prompts": "^2.4.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "keywords": [
+    "template",
+    "scaffold",
+    "starter",
+    "cur8d",
+    "typescript",
+    "python"
+  ],
+  "license": "MIT"
+}
