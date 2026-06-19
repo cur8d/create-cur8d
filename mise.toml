@@ -1,0 +1,31 @@
+[tools]
+node = "latest"
+
+[hooks]
+postinstall = "npx corepack enable"
+
+[shell_alias]
+m = "mise run"
+d = "mise run dev"
+b = "mise run build"
+p = "mise run publish"
+
+g = "git"
+gs = "git status"
+gd = "git diff"
+ga = "git add ."
+gc = "git commit -m"
+gp = "git push"
+
+[tasks.dev]
+description = "Run the project in development mode"
+run = "pnpm run dev"
+
+[tasks.build]
+description = "Build the project"
+run = "pnpm run build"
+
+[tasks.publish]
+description = "Publish to npm"
+run = "pnpm publish --access public --provenance"
+depends = ["build"]
