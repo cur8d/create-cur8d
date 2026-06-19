@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "description": "Scaffold a new project from a cur8d template",
   "bin": {
-    "create-cur8d": "./bin/index.js"
+    "create-cur8d": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node src/index.ts",
-    "prepare": "npm run build"
+    "dev": "node --no-webstorage -r ts-node/register src/index.ts"
   },
   "dependencies": {
     "degit": "^2.8.4",
@@ -25,7 +24,6 @@
     "node": ">=18"
   },
   "files": [
-    "bin",
     "dist"
   ],
   "keywords": [

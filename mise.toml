@@ -1,6 +1,9 @@
 [tools]
 node = "latest"
 
+[env]
+NODE_OPTIONS = "--no-webstorage"
+
 [hooks]
 postinstall = "npx corepack enable"
 

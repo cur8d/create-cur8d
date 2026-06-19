@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import degit from "degit";
 import prompts from "prompts";
 import kleur from "kleur";
