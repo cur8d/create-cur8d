@@ -1,11 +1,9 @@
 [tools]
 node = "latest"
+pnpm = "latest"
 
 [env]
 NODE_OPTIONS = "--no-webstorage"
-
-[hooks]
-postinstall = "npx corepack enable"
 
 [shell_alias]
 m = "mise run"
