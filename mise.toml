@@ -2,8 +2,6 @@
 node = "latest"
 pnpm = "latest"
 
-[env]
-NODE_OPTIONS = "--no-webstorage"
 
 [shell_alias]
 m = "mise run"
@@ -28,8 +26,5 @@ run = "pnpm run build"
 
 [tasks.publish]
 description = "Publish to npm"
-run = [
-  "pnpm config set //registry.npmjs.org/:_authToken \"$NPM_TOKEN\"",
-  "pnpm publish --access public --provenance --no-git-checks"
-]
+run = "pnpm publish --access public --provenance --no-git-checks"
 depends = ["build"]
