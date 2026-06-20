@@ -2,6 +2,10 @@
   "name": "create-cur8d",
   "version": "0.1.0",
   "description": "Scaffold a new project from a cur8d template",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cur8d/create-cur8d.git"
+  },
   "bin": {
     "create-cur8d": "./dist/index.js"
   },
