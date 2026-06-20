@@ -28,5 +28,8 @@ run = "pnpm run build"
 
 [tasks.publish]
 description = "Publish to npm"
-run = "pnpm publish --access public --provenance --no-git-checks"
+run = [
+  "pnpm config set //registry.npmjs.org/:_authToken \"$NPM_TOKEN\"",
+  "pnpm publish --access public --provenance --no-git-checks"
+]
 depends = ["build"]
