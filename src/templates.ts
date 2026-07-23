@@ -5,6 +5,11 @@ export interface Template {
 }
 
 export const templates: Record<string, Template> = {
+  lambda: {
+    label: "AWS Lambda",
+    repo: "cur8d/lambda",
+    description: "Production-ready AWS Lambda project templates for real-life scenarios",
+  },
   tsx: {
     label: "TypeScript / Next.js",
     repo: "cur8d/typescript",
