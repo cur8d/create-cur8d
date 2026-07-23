@@ -1,6 +1,6 @@
 {
   "name": "create-cur8d",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Scaffold a new project from a cur8d template",
   "repository": {
     "type": "git",
@@ -11,7 +11,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "node --no-webstorage -r ts-node/register src/index.ts"
+    "dev": "node --no-webstorage -r ts-node/register src/index.ts",
+    "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
     "degit": "^2.8.4",
@@ -36,7 +37,10 @@
     "starter",
     "cur8d",
     "typescript",
-    "python"
+    "python",
+    "lambda",
+    "aws-lambda",
+    "serverless"
   ],
   "license": "MIT"
 }

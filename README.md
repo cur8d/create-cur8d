@@ -9,16 +9,18 @@ Scaffold a new project from a [cur8d](https://cur8d.dev) template.
 npx create-cur8d
 
 # With arguments
-npx create-cur8d my-app --template tsx
-npx create-cur8d my-api --template py
+npx create-cur8d --template lambda my-function
+npx create-cur8d --template py my-api
+npx create-cur8d --template tsx my-app
 ```
 
 ## Available Templates
 
 | Template | Stack | Repo |
 |----------|-------|------|
-| `tsx` | TypeScript / Next.js | [cur8d/typescript](https://github.com/cur8d/typescript) |
+| `lambda` | AWS Lambda | [cur8d/lambda](https://github.com/cur8d/lambda) |
 | `py` | Python | [cur8d/python](https://github.com/cur8d/python) |
+| `tsx` | TypeScript / Next.js | [cur8d/typescript](https://github.com/cur8d/typescript) |
 
 ## Development
 
