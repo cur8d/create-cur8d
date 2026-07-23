@@ -8,8 +8,22 @@ import { isValidProjectName, projectExists, formatError } from "./utils";
 async function main() {
   const args = process.argv.slice(2);
 
-  let projectName = args[0];
-  const templateArg = args.find((a) => a.startsWith("--template="))?.split("=")[1];
+  let projectName: string | undefined;
+  let templateArg: string | undefined;
+
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg.startsWith("--template=")) {
+      templateArg = arg.slice("--template=".length);
+    } else if (arg.startsWith("-t=")) {
+      templateArg = arg.slice("-t=".length);
+    } else if (arg === "--template" || arg === "-t") {
+      templateArg = args[i + 1];
+      i++;
+    } else if (!arg.startsWith("-") && !projectName) {
+      projectName = arg;
+    }
+  }
 
   console.log(kleur.bold().cyan("\n  cur8d — curated project templates\n"));
 
