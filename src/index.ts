@@ -97,6 +97,11 @@ ${Object.entries(templates)
     process.exit(1);
   }
 
+  if (!isValidProjectName(projectName)) {
+    console.error(formatError("Invalid project name. Only letters, numbers, hyphens, and underscores are allowed."));
+    process.exit(1);
+  }
+
   if (!templates[template]) {
     console.error(formatError(`Unknown template: "${template}". Available: ${Object.keys(templates).join(", ")}`));
     process.exit(1);
