@@ -8,6 +8,37 @@ import { isValidProjectName, projectExists, formatError } from "./utils";
 async function main() {
   const args = process.argv.slice(2);
 
+  if (args.includes("--help") || args.includes("-h")) {
+    console.log(`
+  ${kleur.bold().cyan("cur8d")} — scaffold a new project from a cur8d template
+
+  ${kleur.bold("Usage:")}
+    create-cur8d [project-name] [options]
+
+  ${kleur.bold("Options:")}
+    -t, --template <name>   Template to use (${Object.keys(templates).join(", ")})
+    -h, --help              Display this help message
+    -v, --version           Display version
+
+  ${kleur.bold("Templates:")}
+${Object.entries(templates)
+  .map(([k, t]) => `    ${kleur.cyan(k.padEnd(10))} ${t.label} — ${t.description}`)
+  .join("\n")}
+    `);
+    process.exit(0);
+  }
+
+  if (args.includes("--version") || args.includes("-v")) {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const pkg = require("../package.json");
+      console.log(pkg.version ?? "0.2.0");
+    } catch {
+      console.log("0.2.0");
+    }
+    process.exit(0);
+  }
+
   let projectName: string | undefined;
   let templateArg: string | undefined;
 
