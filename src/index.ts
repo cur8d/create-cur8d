@@ -127,10 +127,15 @@ ${Object.entries(templates)
     process.exit(1);
   }
 
-  console.log(kleur.green(`  ✔ Created ${projectName}\n`));
+  console.log(kleur.green(`\n  ✔ Successfully scaffolded ${kleur.bold(projectName)} with ${kleur.cyan(templates[template].label)} template!\n`));
   console.log(kleur.bold("  Next steps:\n"));
-  console.log(`  ${kleur.cyan("cd")} ${projectName}`);
-  console.log(`  ${kleur.dim("# See README.md for setup instructions")}\n`);
+  console.log(`    ${kleur.cyan("1.")} cd ${kleur.bold(projectName)}`);
+  if (template === "tsx" || template === "py" || template === "lambda") {
+    console.log(`    ${kleur.cyan("2.")} mise run init`);
+  } else {
+    console.log(`    ${kleur.cyan("2.")} See README.md for setup instructions`);
+  }
+  console.log();
 }
 
 main().catch((err) => {
