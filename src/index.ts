@@ -8,6 +8,37 @@ import { isValidProjectName, projectExists, formatError } from "./utils";
 async function main() {
   const args = process.argv.slice(2);
 
+  if (args.includes("--help") || args.includes("-h")) {
+    console.log(`
+  ${kleur.bold().cyan("cur8d")} — scaffold a new project from a cur8d template
+
+  ${kleur.bold("Usage:")}
+    create-cur8d [project-name] [options]
+
+  ${kleur.bold("Options:")}
+    -t, --template <name>   Template to use (${Object.keys(templates).join(", ")})
+    -h, --help              Display this help message
+    -v, --version           Display version
+
+  ${kleur.bold("Templates:")}
+${Object.entries(templates)
+  .map(([k, t]) => `    ${kleur.cyan(k.padEnd(10))} ${t.label} — ${t.description}`)
+  .join("\n")}
+    `);
+    process.exit(0);
+  }
+
+  if (args.includes("--version") || args.includes("-v")) {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const pkg = require("../package.json");
+      console.log(pkg.version ?? "0.3.0");
+    } catch {
+      console.log("0.3.0");
+    }
+    process.exit(0);
+  }
+
   let projectName: string | undefined;
   let templateArg: string | undefined;
 
@@ -66,6 +97,11 @@ async function main() {
     process.exit(1);
   }
 
+  if (!isValidProjectName(projectName)) {
+    console.error(formatError("Invalid project name. Only letters, numbers, hyphens, and underscores are allowed."));
+    process.exit(1);
+  }
+
   if (!templates[template]) {
     console.error(formatError(`Unknown template: "${template}". Available: ${Object.keys(templates).join(", ")}`));
     process.exit(1);
@@ -91,10 +127,15 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(kleur.green(`  ✔ Created ${projectName}\n`));
+  console.log(kleur.green(`\n  ✔ Successfully scaffolded ${kleur.bold(projectName)} with ${kleur.cyan(templates[template].label)} template!\n`));
   console.log(kleur.bold("  Next steps:\n"));
-  console.log(`  ${kleur.cyan("cd")} ${projectName}`);
-  console.log(`  ${kleur.dim("# See README.md for setup instructions")}\n`);
+  console.log(`    ${kleur.cyan("1.")} cd ${kleur.bold(projectName)}`);
+  if (template === "tsx" || template === "py" || template === "lambda") {
+    console.log(`    ${kleur.cyan("2.")} mise run init`);
+  } else {
+    console.log(`    ${kleur.cyan("2.")} See README.md for setup instructions`);
+  }
+  console.log();
 }
 
 main().catch((err) => {
