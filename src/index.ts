@@ -32,9 +32,9 @@ ${Object.entries(templates)
     try {
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       const pkg = require("../package.json");
-      console.log(pkg.version ?? "0.2.0");
+      console.log(pkg.version ?? "0.3.0");
     } catch {
-      console.log("0.2.0");
+      console.log("0.3.0");
     }
     process.exit(0);
   }
